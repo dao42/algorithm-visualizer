@@ -16,7 +16,7 @@ export default async function handler(
     await dirExists(dir);
     await promisify(fs.writeFile)(path.join(dir, "main.cpp"), req.body.code);
     await execute(
-      `cd ${dir} && g++ main.cpp -o Main -O2 -std=c++11 -lcurl -B "/var/empty/local" && ALGORITHM_VISUALIZER=1 ./Main`
+      `cd ${dir} && g++ main.cpp -o Main -O2 -std=c++11 -lcurl -B "/home/runner/var/empty/local" && ALGORITHM_VISUALIZER=1 ./Main`
     );
     const commands = await promisify(fs.readFile)(
       path.join(dir, "visualization.json"),
